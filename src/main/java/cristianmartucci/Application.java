@@ -2,6 +2,8 @@ package cristianmartucci;
 
 import cristianmartucci.dao.EventDAO;
 import cristianmartucci.dao.LocationDAO;
+import cristianmartucci.dao.ParticipationDAO;
+import cristianmartucci.dao.PersonDAO;
 import cristianmartucci.entities.Event;
 import cristianmartucci.entities.EventType;
 import cristianmartucci.entities.Location;
@@ -19,6 +21,8 @@ public class Application {
         EntityManager em = emf.createEntityManager();
         EventDAO ed = new EventDAO(em);
         LocationDAO ld = new LocationDAO(em);
+        ParticipationDAO pd = new ParticipationDAO(em);
+        PersonDAO personDao = new PersonDAO(em);
 
         Location location = new Location("Teatro Ariston", "Sanremo");
         ld.save(location);

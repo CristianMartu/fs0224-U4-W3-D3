@@ -3,6 +3,7 @@ package cristianmartucci.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -20,9 +21,13 @@ public class Event {
     private EventType event_type;
     @Column(name = "max people")
     private int max_people;
+
     @ManyToOne
     @JoinColumn(name = "location_id", nullable = false)
     private Location location;
+
+    @OneToMany(mappedBy = "event")
+    private List<Participation> participationList;
 
     public Event() {
     }
@@ -34,6 +39,14 @@ public class Event {
         this.event_type = event_type;
         this.max_people = max_people;
         this.location = location;
+    }
+
+    public List<Participation> getPartecipation() {
+        return participationList;
+    }
+
+    public void setPartecipation(List<Participation> participations) {
+        this.participationList = participations;
     }
 
     public UUID getId() {
@@ -78,6 +91,14 @@ public class Event {
 
     public void setMax_people(int max_people) {
         this.max_people = max_people;
+    }
+
+    public List<Participation> getParticipationList() {
+        return participationList;
+    }
+
+    public void setParticipationList(List<Participation> participationList) {
+        this.participationList = participationList;
     }
 
     public Location getLocation() {
