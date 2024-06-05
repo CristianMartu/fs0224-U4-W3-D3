@@ -23,6 +23,15 @@ public class Participation {
     @Enumerated(EnumType.STRING)
     private ParticipationState participation_state;
 
+    public Participation() {
+    }
+
+    public Participation(ParticipationState participation_state, Event event, Person person) {
+        this.participation_state = participation_state;
+        this.event = event;
+        this.person = person;
+    }
+
     public UUID getId() {
         return id;
     }

@@ -23,6 +23,19 @@ public class Person {
     @OneToMany(mappedBy = "person")
     private List<Participation> participationList;
 
+    public Person() {
+
+    }
+
+    public Person(String name, String surname, String email, LocalDate year_of_birth, GenderType gender) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.year_of_birth = year_of_birth;
+        this.gender = gender;
+        this.participationList = participationList;
+    }
+
     public UUID getId() {
         return id;
     }
