@@ -15,7 +15,6 @@ public class Person {
     private String name;
     private String surname;
     private String email;
-    @Column(name = "year of birth")
     private LocalDate year_of_birth;
     @Enumerated(EnumType.STRING)
     private GenderType gender;

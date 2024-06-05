@@ -23,24 +23,47 @@ public class Application {
         ParticipationDAO pd = new ParticipationDAO(em);
 
         Location location = new Location("Teatro Ariston", "Sanremo");
-//        ld.save(location);
+        Location location2 = new Location("Centro città", "Modena");
+//        ld.save(location2);
 
         LocalDate date = LocalDate.of(2024, 5, 7);
         Event event = new Event("Eurovision Song Contest 2024", date, "L'Eurovision Song Contest 2024 è stata la 68ª edizione dell'annuale concorso canoro, vinta dal cantante svizzero Nemo con la canzone The Code.", EventType.PRIVATO, 13700, location);
-//        ed.save(event);
+        Event event2 = new Event("Run 5.30", LocalDate.parse("2024-06-06"), "Evento pubblico", EventType.PUBBLICO, 3000, location2);
+//        ed.save(event2);
 
-        Person geralt = new Person("Geralt", "Of Rivia", "geraltOfRivia@gmail.com", LocalDate.parse("1964-02-06"), GenderType.MASCHIO);
-//        personDao.save(geralt);
+        Person person = new Person("Geralt", "Of Rivia", "geraltOfRivia@gmail.com", LocalDate.parse("1964-02-06"), GenderType.MASCHIO);
+        //personDao.save(person);
 
 
-        Event eventFromDb = ed.getById("1cd33559-a2eb-411d-b6bd-e3c15f9f80ad");
-        Person geraltFromDb = personDao.getById("d02dca79-e0fb-479a-9e45-459d41f7d93f");
-        Participation participation = new Participation(ParticipationState.CONFERMATA, eventFromDb, geraltFromDb);
+        Event eventFromDb = ed.getById("f7a2d674-8763-4aef-a7f4-844ae9da0523");
+        Person personFromDb = personDao.getById("8944caba-e2d8-4a6e-b14c-300069d07cba");
+        Participation participation = new Participation(ParticipationState.CONFERMATA, eventFromDb, personFromDb);
 //        pd.save(participation);
 
         try {
-            Event eventType = ed.getById("6e826523-0b78-49dd-9908-5d3f544f0b1b");
-            System.out.println(eventType);
+            Location getLocation = ld.getById("a642a338-f330-4aaa-96c5-7ec08f562f7d");
+            System.out.println(getLocation);
+        } catch (EventException error) {
+            System.out.println(error.getMessage());
+        }
+
+        try {
+            Event getEvent = ed.getById("ac6c1338-9321-4b30-b4ad-18a54429f8b1");
+            System.out.println(getEvent);
+        } catch (EventException error) {
+            System.out.println(error.getMessage());
+        }
+
+        try {
+            Person getPerson = personDao.getById("8944caba-e2d8-4a6e-b14c-300069d07cba");
+            System.out.println(getPerson);
+        } catch (EventException error) {
+            System.out.println(error.getMessage());
+        }
+
+        try {
+            Participation getParticipation = pd.getById("3f301115-f3f7-4056-9473-ef2857a7bd9a");
+            System.out.println(getParticipation);
         } catch (EventException error) {
             System.out.println(error.getMessage());
         }

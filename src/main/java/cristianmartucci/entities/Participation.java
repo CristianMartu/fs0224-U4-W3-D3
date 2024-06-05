@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.UUID;
 
 @Entity
-@Table(name = "partecipation")
+@Table(name = "participation")
 public class Participation {
     @Id
     @GeneratedValue
@@ -19,7 +19,6 @@ public class Participation {
     @JoinColumn(name = "event_id", nullable = false)
     private Event event;
 
-    @Column(name = "participation name")
     @Enumerated(EnumType.STRING)
     private ParticipationState participation_state;
 

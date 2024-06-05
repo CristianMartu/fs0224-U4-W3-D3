@@ -13,13 +13,10 @@ public class Event {
     @GeneratedValue
     private UUID id;
     private String title;
-    @Column(name = "event date")
     private LocalDate event_date;
     private String description;
-    @Column(name = "event type")
     @Enumerated(EnumType.STRING)
     private EventType event_type;
-    @Column(name = "max people")
     private int max_people;
 
     @ManyToOne
